@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const DEFAULT_QUERY = 'redux';
-const DEFAULT_PAGE = 0;
-const DEFAULT_HPP = '100';
-
-const PATH_BASE = 'https://hn.algolia.com/api/v1';
-const PATH_SEARCH = '/search';
-const PARAM_SEARCH = 'query=';
-const PARAM_PAGE = 'page=';
-const PARAM_HPP = 'hitsPerPage=';
+import {
+  DEFAULT_QUERY,
+  DEFAULT_PAGE,
+  DEFAULT_HPP,
+  PATH_BASE,
+  PATH_SEARCH,
+  PARAM_HPP,
+  PARAM_PAGE,
+  PARAM_SEARCH
+} from '../../constants';
+import { Search } from '../Search';
+import { Table } from '../Table';
+import { Button } from '../Button';
 
 // const isSearched = (searchTerm) => (item) =>
 //   !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -131,53 +135,6 @@ class App extends Component {
     );
   }
 }
-
-const Search = ({ value, onChange, children, onSubmit }) =>
-  (
-    <form onSubmit={onSubmit}>
-      <input
-        type={"text"}
-        value={value}
-        onChange={onChange}
-      />
-      <button type={"submit"}>
-        {children}
-      </button>
-    </form>
-  );
-
-const Table = ({list, onDismiss}) =>
-  <div className={"table"}>
-    { list.map(
-        item =>
-          <div key={item.objectID} className={"table-row"}>
-            <span style={{ width: "40%"}}>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span style={{ width: "30%"}}>{item.author}</span>
-            <span style={{ width: "10%"}}>{item.num_comments}</span>
-            <span style={{ width: "10%"}}>{item.points}</span>
-            <span style={{ width: "10%"}}>
-              <Button
-                onClick={() => onDismiss(item.objectID)}
-                className={"button-inline"}
-              >
-                Dismiss
-              </Button>
-            </span>
-          </div>
-      )
-    }
-  </div>;
-
-const Button = ({onClick, className ='', children}) =>
-      <button
-        onClick={onClick}
-        className={className}
-        type={"button"}
-      >
-        {children}
-      </button>;
 
 
 export default App;
