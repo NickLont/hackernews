@@ -28,7 +28,7 @@ const Table = ({list, onDismiss}) =>
 
 Table.propTypes = {
   list: PropTypes.array.isRequired,
-  onDismiss: PropTypes.func.isRequired,
+  onDismiss: PropTypes.func,
 };
 
 export default Table;

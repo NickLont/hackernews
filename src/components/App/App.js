@@ -136,5 +136,6 @@ class App extends Component {
   }
 }
 
-
 export default App;
+
+export { Table, Search, Button };
